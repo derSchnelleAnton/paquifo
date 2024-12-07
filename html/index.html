@@ -3,74 +3,15 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Große Textfelder</title>
-  <style>
-    body {
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      height: 100vh;
-      margin: 0;
-      font-family: Arial, sans-serif;
-      background-color: green;
-    }
-
-    .container {
-      display: flex;
-      gap: 20px;
-      width: 80%; /* Die Gesamtbreite der beiden Textfelder */
-    }
-
-    textarea {
-      flex: 1; /* Beide Textfelder erhalten gleiche Breite */
-      height: 300px;
-      resize: none;
-      font-size: 16px;
-      padding: 10px;
-      border: 1px solid #ccc;
-      border-radius: 5px;
-      box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.1);
-      background-color: yellow;
-    }
-
-    textarea:focus {
-      border-color: #007bff;
-      outline: none;
-      box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
-    }
-
-    button {
-      margin-bottom: 20px;
-      padding: 10px 20px;
-      font-size: 16px;
-      color: white;
-      background-color: #007bff;
-      border: none;
-      border-radius: 5px;
-      cursor: pointer;
-    }
-
-    button:hover {
-      background-color: #0056b3;
-    }
-
-    #stats {
-      margin-top: 20px;
-      font-size: 16px;
-      width: 80%; /* Gleiche Breite wie die beiden Textfelder */
-      height: 20%;
-      color: white;
-      text-align: left;
-      border: 3px solid blue;
-      background-color: #007bff;
-    }
-  </style>
+  <title>PA Quick Format</title>
+  <link rel="icon" href="../images/favicon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="../images/favicon.png">
+  <!-- Binde das externe Stylesheet ein -->
+  <link rel="stylesheet" href="../css/styles.css">
 </head>
 <body>
-  <!-- Button über den Textfeldern -->
-  <button id="formatButton">Format</button>
 
+  
   <!-- Container mit zwei Textfeldern -->
   <div class="container">
     <textarea id="input" placeholder="Textfeld 1"></textarea>
@@ -78,7 +19,15 @@
   </div>
 
   <!-- Statistiken unter den Textfeldern -->
-  <div id="stats">Waiting for input</div>
+  
+
+  <div class="container">
+    <div id="stats">Waiting for input</div>
+    <div id="btns">
+        <button id="formatButton">Reformat</button><br>
+        <button id="cleanButton">Clean</button> <!-- CLEAN EINFÜGEN -->
+    </div>
+  </div>
 
   <!-- Binde das externe JavaScript ein -->
   <script src="../js/format.js"></script>
