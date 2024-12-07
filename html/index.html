@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Große Textfelder</title>
+
+
+
+  <style>
+    body {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background-color: green;
+    }
+
+    .container {
+      display: flex;
+      gap: 20px;
+    }
+
+    textarea {
+      width: 400px;
+      height: 300px;
+      resize: none;
+      font-size: 16px;
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.1);
+      background-color: black;
+    }
+
+    textarea:focus {
+      border-color: #007bff;
+      outline: none;
+      box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+
+    <button>heloo</button>
+
+    <textarea placeholder="Textfeld 1"></textarea>
+    <textarea placeholder="Textfeld 2"></textarea>
+  </div>
+</body>
+</html>
