@@ -1,37 +1,49 @@
-// Event-Listener für den Button
-
-
-document.getElementById('buttonFormat').addEventListener('click', format);
-
-
+document.getElementById("buttonGo").addEventListener("click", main);
 
 class io {
+    type = "";
     input = "";
-    brackets = false;
-    quotations = false;
     chars = 0;
-    clean = "";
-    formatted = "";
+    balancedBrackets = true;
+    balancedSingleQuotes = true;
+    balancedDoubleQuotes = true;
+    output = "";
 }
 
-function format() {
-    let check = new io();
+function main() {
+    let checks = new io();
 
-    // Text aus dem Eingabefeld lesen
-    check.input = document.getElementById("textInput").value;
+    manageInput(checks);
+    manageFormat(checks);
+    manageOutput(checks);
+}
 
-    check.chars = check.input.length; // Anzahl der Zeichen
-    check.brackets = twoCharSymmetry(check.input, '(', ')'); // Klammer-Symmetrie prüfen
-    check.quotations = oneCharSymmetry(check.input, "'"); // Symmetrie für Anführungszeichen prüfen
-    check.clean = cleanTabs(cleanLinefeed(check.input));
-    check.formatted = insertTabs(check.clean);
+function manageInput(io) {
+    const selectedOption = document.querySelector('input[name="option"]:checked');
+    if (!selectedOption) {
+        alert("Missing selection!");
+        return;
+    }
+    io.type = selectedOption.value;
+    io.input = document.getElementById("textInput").value;
+}
+
+function manageFormat(io) {
+    io.chars = io.input.length;
+    io.balancedBrackets = twoCharSymmetry(io.input, "(", ")");
+    io.balancedSingleQuotes = oneCharSymmetry(io.input, "'");
+    io.balancedDoubleQuotes = oneCharSymmetry(io.input, "\"");
 
 
-    // Statistiken in die Div-Box schreiben
-    document.getElementById('stats').innerHTML = `Characters: ${check.chars}<br>Brackets balanced: ${check.brackets}<br>Quotations balanced: ${check.quotations}`;
+    io.output = io.type === "c" ? clean(io.input) : reformat(clean(io.input));
+}
 
-    // Ergebnis im zweiten Textfeld anzeigen
-    document.getElementById("textOutput").value = check.formatted;
+function manageOutput(io) {
+    document.getElementById("textOutput").value = io.output;
+    document.getElementById("chars").innerHTML = `${io.chars}`;
+    document.getElementById("balancedBrackets").innerHTML = `${io.balancedBrackets}`;
+    document.getElementById("balancedSingle").innerHTML = `${io.balancedSingleQuotes}`;
+    document.getElementById("balancedDouble").innerHTML = `${io.balancedDoubleQuotes}`;
 }
 
 function twoCharSymmetry(text, charOne, charTwo) {
@@ -52,6 +64,10 @@ function countChar(text, char) {
     return c;
 }
 
+function clean(text) {
+    return cleanTabs(cleanLinefeed(text));
+}
+
 function cleanLinefeed(text) {
     return text.replace(/\n/g, "");
 }
@@ -59,25 +75,25 @@ function cleanLinefeed(text) {
 function cleanTabs(text) {
     return text.replace(/'([^']*)'|\s+/g, (match, quotedText) => {
         if (quotedText !== undefined) {
-            return `'${quotedText}'`; // Inhalt in Anführungszeichen beibehalten
+            return `'${quotedText}'`;
         }
-        return ''; // Leerzeichen entfernen
+        return '';
     });
 }
 
-function insertTabs(text) {
-    let temp = ""; // String für den neuen Text
-    let indentLevel = 0; // Zähler für die Tiefe der Einrückung
+function reformat(text) {
+    let temp = "";
+    let indentLevel = 0;
 
     for (let i = 0; i < text.length; i++) {
         if (text[i] === "(") {
-            indentLevel++; // Einrückung erhöhen
-            temp += `(\n${"    ".repeat(indentLevel)}`; // Neue Zeile und Einrückung hinzufügen
+            indentLevel++;
+            temp += `(\n${"    ".repeat(indentLevel)}`;
         } else if (text[i] === ")") {
-            indentLevel = Math.max(0, indentLevel - 1); // Einrückung reduzieren
-            temp += `\n${"    ".repeat(indentLevel)})`; // Neue Zeile vor der schließenden Klammer
+            indentLevel = Math.max(0, indentLevel - 1);
+            temp += `\n${"    ".repeat(indentLevel)})`;
         } else {
-            temp += text[i]; // Normales Zeichen hinzufügen
+            temp += text[i];
         }
     }
     return temp;

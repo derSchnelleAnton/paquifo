@@ -14,9 +14,18 @@
 
   <!-- Buttons -->
   <div class="button-wrapper">
-    <button id="buttonFormat">Format</button>
-    <button id="buttonClean">Clean</button>
-    <button>Copy</button>
+    
+    
+    <form>
+        <label>
+          <input type="radio" name="option" value="c" checked> Clean
+        </label>
+        <label>
+          <input type="radio" name="option" value="f"> Reformat
+        </label>
+      </form>
+    <button id="buttonGo">Go</button>
+    <button id="buttonCopy">Copy</button>
   </div>
 
   <!-- Textbereiche -->
@@ -31,25 +40,25 @@
           <tr>
             <td>Characters</td>
             <td>
-                <div class="stat_entry">text</div>
+                <div id="chars" class="stat">text</div>
             </td>
           </tr>
           <tr>
             <td>Balanced brackets</td>
             <td>
-                <div class="stat_entry">text</div>
+                <div id="balancedBrackets" class="stat">text</div>
             </td>
           </tr>
           <tr>
             <td>Even single quotes </td>
             <td>
-                <div class="stat_entry">text</div>
+                <div id="balancedSingle" class="stat">text</div>
             </td>
           </tr>
           <tr>
             <td>Even double quotes</td>
             <td>
-                <div class="stat_entry">text</div>
+                <div id="balancedDouble" class="stat">text</div>
             </td>
           </tr>
         </tbody>

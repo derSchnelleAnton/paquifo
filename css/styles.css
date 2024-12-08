@@ -45,22 +45,6 @@ body {
     background-color: #f9f9f9;
   }
 
-
-  .stats-wrapper {
-    width: 70%;
-    min-width: 100px;
-    height: 200px;
-    background-color: orange;
-    display:flex;
-    align-items: center;
-    justify-content: center;
-    gap:20px;
-  }
-
-  .stats-point {
-    margin: 10px;
-  }
-
   table {
     border-collapse: collapse; /* Entfernt doppelte Rahmen */
     width: 50%; /* Verhindert, dass die Tabelle den Rand überschreitet */
