@@ -9,24 +9,52 @@
 <body>
   <!-- Banner-Bereich -->
   <header class="banner">
+    Text Formatting Tool
   </header>
 
+  <!-- Buttons -->
   <div class="button-wrapper">
-    <button>Format</button>
-    <button>Clean</button>
-    <button></button>
-    <button></button>
+    <button id="buttonFormat">Format</button>
+    <button id="buttonClean">Clean</button>
+    <button>Copy</button>
   </div>
 
+  <!-- Textbereiche -->
   <div class="text-wrapper">
-    <textarea name="input"></textarea>
-    <textarea name="output"></textarea>
+    <textarea id="textInput"></textarea>
+    <textarea id="textOutput"></textarea>
   </div>
 
 
+    <table>
+        <tbody>
+          <tr>
+            <td>Characters</td>
+            <td>
+                <div class="stat_entry">text</div>
+            </td>
+          </tr>
+          <tr>
+            <td>Balanced brackets</td>
+            <td>
+                <div class="stat_entry">text</div>
+            </td>
+          </tr>
+          <tr>
+            <td>Even single quotes </td>
+            <td>
+                <div class="stat_entry">text</div>
+            </td>
+          </tr>
+          <tr>
+            <td>Even double quotes</td>
+            <td>
+                <div class="stat_entry">text</div>
+            </td>
+          </tr>
+        </tbody>
+      </table>
 
-
-
-  </div>
+  <script src="../js/format.js"></script>
 </body>
 </html>

@@ -1,5 +1,9 @@
 // Event-Listener für den Button
-document.getElementById('formatButton').addEventListener('click', format);
+
+
+document.getElementById('buttonFormat').addEventListener('click', format);
+
+
 
 class io {
     input = "";
@@ -14,7 +18,7 @@ function format() {
     let check = new io();
 
     // Text aus dem Eingabefeld lesen
-    check.input = document.getElementById("input").value;
+    check.input = document.getElementById("textInput").value;
 
     check.chars = check.input.length; // Anzahl der Zeichen
     check.brackets = twoCharSymmetry(check.input, '(', ')'); // Klammer-Symmetrie prüfen
@@ -27,7 +31,7 @@ function format() {
     document.getElementById('stats').innerHTML = `Characters: ${check.chars}<br>Brackets balanced: ${check.brackets}<br>Quotations balanced: ${check.quotations}`;
 
     // Ergebnis im zweiten Textfeld anzeigen
-    document.getElementById("output").value = check.formatted;
+    document.getElementById("textOutput").value = check.formatted;
 }
 
 function twoCharSymmetry(text, charOne, charTwo) {
